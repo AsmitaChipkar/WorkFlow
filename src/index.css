@@ -1,0 +1,306 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* ================= BASE ================= */
+body {
+  background:
+    radial-gradient(circle at 50% 120%, rgba(124, 58, 237, 0.35), transparent 60%),
+    #0f0f11;
+
+  color: #EAEAF0;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+
+/* Softer Glow */
+.app-container::before {
+  content: "";
+  position: absolute;
+  bottom: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.3), transparent 70%);
+  filter: blur(100px);
+  z-index: -1;
+}
+
+/* ================= TEXT ================= */
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #a78bfa;
+}
+
+p {
+  text-align: center;
+  color: #9A9AA3;
+  margin-bottom: 20px;
+}
+
+/* ================= GLASS EFFECT ================= */
+.task-form,
+.task-list li,
+.progress-tracker {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ================= TASK FORM ================= */
+.task-form {
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.task-form>div:first-child {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.task-form input,
+.task-form select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  outline: none;
+  background: rgba(0, 0, 0, 0.3);
+  color: #EAEAF0;
+}
+
+.task-form input {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Primary buttons */
+.task-form button,
+.sort-buttons button,
+.clear-btn,
+.task-list button:first-child {
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  border: none;
+  box-shadow: 0 0 8px rgba(124, 58, 237, 0.4);
+}
+
+.task-form button,
+.clear-btn {
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+
+.task-form button:hover,
+.sort-buttons button:hover {
+  box-shadow: 0 0 14px rgba(124, 58, 237, 0.6);
+}
+
+/* ================= TASK LIST ================= */
+.task-list {
+  list-style: none;
+}
+
+.task-list li {
+  padding: 12px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.task-list li:hover {
+  transform: scale(1.01);
+}
+
+/* LEFT SIDE */
+.task-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Completed */
+.Completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.Completed .task-left::before {
+  content: "✔";
+  color: #22c55e;
+  font-weight: bold;
+}
+
+/* Text */
+.task-list span {
+  font-size: 1rem;
+}
+
+.task-list small {
+  display: block;
+  font-size: 0.8rem;
+  color: #9A9AA3;
+}
+
+/* ================= PRIORITY ================= */
+.priority.high {
+  color: #f87171;
+  font-weight: bold;
+}
+
+.priority.medium {
+  color: #facc15;
+}
+
+.priority.low {
+  color: #4ade80;
+}
+
+/* Border highlight */
+.task-list li:has(.priority.high) {
+  border-left: 3px solid #f87171;
+}
+
+.task-list li:has(.priority.medium) {
+  border-left: 3px solid #facc15;
+}
+
+.task-list li:has(.priority.low) {
+  border-left: 3px solid #4ade80;
+}
+
+/* ================= TASK BUTTONS ================= */
+.task-list button {
+  margin-left: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+}
+
+/* Secondary buttons */
+.task-list button:not(:first-child) {
+  background: rgba(255, 255, 255, 0.08);
+  color: #EAEAF0;
+}
+
+.task-list button:hover {
+  opacity: 0.85;
+}
+
+/* ================= EDIT INPUT ================= */
+.task-left input {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  outline: none;
+  background: rgba(0, 0, 0, 0.3);
+  color: #EAEAF0;
+  max-width: 220px;
+}
+
+.task-left input:focus {
+  border-color: #7c3aed;
+}
+
+/* ================= SORT BUTTONS ================= */
+.sort-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.sort-buttons button {
+  padding: 8px 14px;
+  border-radius: 8px;
+}
+
+/* ================= PROGRESS ================= */
+.progress-tracker {
+  padding: 15px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(90deg, #7c3aed, #4f46e5);
+  border-radius: 10px;
+  transition: width 0.4s ease-in-out;
+}
+
+/* ================= CLEAR BUTTON ================= */
+.clear-btn {
+  width: 100%;
+  margin-top: 15px;
+}
+
+/* ================= EDIT MODE CONTAINER ================= */
+
+.edit-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Row for dropdowns + date */
+.edit-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ================= EDIT MODE FIELDS ================= */
+
+.task-left input,
+.task-left select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.2);
+  outline: none;
+  background: rgba(0,0,0,0.3);
+  color: #EAEAF0;
+  max-width: 220px;
+}
+
+/* Full width for main input */
+.edit-input {
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Focus effect */
+.task-left input:focus,
+.task-left select:focus {
+  border-color: #7c3aed;
+}
+
+/* Optional: better dropdown look */
+.task-left select {
+  appearance: none;
+  cursor: pointer;
+}
